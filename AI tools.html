@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Tools Nexus</title>
+    <title>AI Tools</title>
     <style>
         /* Define color palette and animation properties as CSS variables */
         :root {
@@ -135,17 +135,19 @@
         /* Tool Grid & Buttons */
         .tool-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             gap: 1.5rem;
         }
 
         .tool-button {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             background: rgba(42, 42, 70, 0.5); /* Slightly darker button */
             border-radius: 10px;
-            height: 100px;
+            height: 120px;
+            padding: 10px;
             text-decoration: none;
             transition: all 0.3s ease;
             border: 1px solid transparent;
@@ -177,14 +179,29 @@
         }
 
         .tool-button img {
-            max-width: 70%;
-            max-height: 70%;
+            max-width: 50px;
+            max-height: 50px;
             object-fit: contain;
             transition: transform 0.3s ease;
+            margin-bottom: 8px;
         }
 
         .tool-button:hover img {
             transform: scale(1.1);
+        }
+
+        .tool-name {
+            color: var(--text-color);
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-align: center;
+            line-height: 1.2;
+            word-wrap: break-word;
+            hyphens: auto;
+        }
+
+        .tool-button:hover .tool-name {
+            color: var(--header-color);
         }
         
         .note {
@@ -205,7 +222,7 @@
     <div id="cursor-light"></div>
 
     <header>
-        <h1>AI Tools Nexus</h1>
+        <h1>AI Tools</h1>
         <input type="text" id="search-box" placeholder="🔎 Search for any tool...">
     </header>
 
@@ -214,28 +231,36 @@
             <h2>🎨 Image & Design</h2>
             <div class="tool-grid">
                 <a href="https://leonardo.ai" target="_blank" class="tool-button" data-name="Leonardo AI">
-                    <img src="https://asset.brandfetch.io/id0V_tY1N0/idS4d43603.svg" alt="Leonardo Logo">
+                    <img src="https://brandlogos.net/wp-content/uploads/2025/05/leonardo_ai-logo_brandlogos.net_ctjsa-512x497.png" alt="Leonardo Logo">
+                    <span class="tool-name">Leonardo AI</span>
                 </a>
                 <a href="https://www.adobe.com/firefly" target="_blank" class="tool-button" data-name="Adobe Firefly">
-                    <img src="https://www.adobe.com/content/dam/cc/icons/firefly-icon.svg" alt="Adobe Firefly Logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Adobe_Firefly_Logo.svg/1200px-Adobe_Firefly_Logo.svg.png" alt="Adobe Firefly Logo">
+                    <span class="tool-name">Adobe Firefly</span>
                 </a>
                 <a href="https://designer.microsoft.com" target="_blank" class="tool-button" data-name="Microsoft Designer">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Microsoft_Designer_logo.svg" alt="Microsoft Designer Logo">
+                    <img src="https://store-images.s-microsoft.com/image/apps.59519.14282385397322807.60151050-41c3-444e-98c5-303abbe5ca61.9171383a-0488-48f6-b2b9-ce81b097fbeb" alt="Microsoft Designer Logo">
+                    <span class="tool-name">Microsoft Designer</span>
                 </a>
                 <a href="https://simplified.com" target="_blank" class="tool-button" data-name="Simplified">
-                    <img src="https://uploads-ssl.webflow.com/6214efb633a35639d74a88f7/6214f55b9e54a557878a8790_simplified-logo.svg" alt="Simplified Logo">
+                    <img src="https://img.icons8.com/?size=512&id=2mNF42sPFlhD&format=png" alt="Simplified Logo">
+                    <span class="tool-name">Simplified</span>
                 </a>
                 <a href="https://playground.com" target="_blank" class="tool-button" data-name="Playground">
-                    <img src="https://storage.googleapis.com/playground-prod-web/assets/logo-symbol-play-black.svg" style="filter: invert(1);" alt="Playground Logo">
+                    <img src="https://res.cloudinary.com/apideck/image/upload/v1673573862/marketplaces/ckhg56iu1mkpc0b66vj7fsj3o/listings/playground-ai_211905_f43emy.webp" style="filter: invert(1);" alt="Playground Logo">
+                    <span class="tool-name">Playground</span>
                 </a>
                 <a href="https://uizard.io" target="_blank" class="tool-button" data-name="Uizard">
-                    <img src="https://uizard.io/img/logo-dark.svg" style="filter: invert(1);" alt="Uizard Logo">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPy8rydMu4Ns2O0a8h3KWnSLEHEv1VuiJ1-A&s" style="filter: invert(1);" alt="Uizard Logo">
+                    <span class="tool-name">Uizard</span>
                 </a>
                 <a href="https://ideogram.ai" target="_blank" class="tool-button" data-name="Ideogram">
-                    <img src="https://ideogram.ai/assets/logo-black.svg" style="filter: invert(1);" alt="Ideogram Logo">
+                    <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/ideogram.png" style="filter: invert(1);" alt="Ideogram Logo">
+                    <span class="tool-name">Ideogram</span>
                 </a>
                 <a href="https://www.hitpaw.com" target="_blank" class="tool-button" data-name="HitPaw">
-                    <img src="https://www.hitpaw.com/logo.png" alt="HitPaw Logo">
+                    <img src="https://yt3.googleusercontent.com/ytc/AIdro_kvmh6fCjicKNhlyS7cHaJAoFwkv8VZ60fUBAnfoKt-8g=s900-c-k-c0x00ffffff-no-rj" alt="HitPaw Logo">
+                    <span class="tool-name">HitPaw</span>
                 </a>
             </div>
         </section>
@@ -245,25 +270,32 @@
             <p class="note">Note: CapCut requires a download from their website.</p>
             <div class="tool-grid">
                 <a href="https://www.veed.io" target="_blank" class="tool-button" data-name="Veed.io">
-                    <img src="https://www.veed.io/images/veed-logo-symbol-black.svg" style="filter: invert(1);" alt="Veed Logo">
+                    <img src="https://striking-kindness-e0d93214bb.media.strapiapp.com/VEED_IO_f3b0ed98b1.jpeg" style="filter: invert(1);" alt="Veed Logo">
+                    <span class="tool-name">Veed.io</span>
                 </a>
                 <a href="https://www.descript.com" target="_blank" class="tool-button" data-name="Descript">
-                    <img src="https://asset.brandfetch.io/idT2bT46X5/id58U41QNo.svg" alt="Descript Logo">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrN9KphSpWBzCUCulJqLuLnqYatcP53JBZvA&s" alt="Descript Logo">
+                    <span class="tool-name">Descript</span>
                 </a>
                 <a href="https://www.revid.ai" target="_blank" class="tool-button" data-name="Revid AI">
-                    <img src="https://www.revid.ai/images/logo.png" alt="Revid Logo">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPku74qyRO_Qfqk27jAJEIfuxlDgmGcWnEyAfJx-zlaUj-SZSOm-zgnswxkCjlF5HJwHc&usqp=CAU" alt="Revid Logo">
+                    <span class="tool-name">Revid AI</span>
                 </a>
                 <a href="https://pictory.ai" target="_blank" class="tool-button" data-name="Pictory">
-                    <img src="https://pictory.ai/wp-content/uploads/2023/12/pictory-favicon-192.png" alt="Pictory Logo">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRODNZnjD2-sfERyLlnbpCNECbFnt8DB6G61g&s" alt="Pictory Logo">
+                    <span class="tool-name">Pictory</span>
                 </a>
                 <a href="https://invideo.io" target="_blank" class="tool-button" data-name="Invideo">
-                    <img src="https://invideo.io/static/main-logo-192x192-3d5f36098d5755106bdd1d5458e03d32.png" alt="Invideo Logo">
+                    <img src="https://play-lh.googleusercontent.com/WDz0NXm0WUG7mYSR-RcwehRDAYs-Oip4SH1yMRkU9Kax_9f2v7VcUTzUgdnNT7wcEpo7" alt="Invideo Logo">
+                    <span class="tool-name">Invideo</span>
                 </a>
                 <a href="https://runwayml.com" target="_blank" class="tool-button" data-name="RunwayML">
-                    <img src="https://runwayml.com/static/images/logo-dark.svg" style="filter: invert(1);" alt="Runway Logo">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHlra3Wvr7b8qHqshw5br-_hI5-DD1mj5kQw&s" style="filter: invert(1);" alt="Runway Logo">
+                    <span class="tool-name">RunwayML</span>
                 </a>
                 <a href="https://www.capcut.com" target="_blank" class="tool-button" data-name="Capcut App Install">
-                    <img src="https://lf16-capcut-web.capcutugc.com/obj/capcut-web-biz/static-resource/image/capcut_logo_2023_v2.svg" alt="Capcut Logo">
+                    <img src="https://cdn2.futurepedia.io/9bef6d4068bf31831587b04a43238260480eab10-1000x1000.webp?w=256" alt="Capcut Logo">
+                    <span class="tool-name">CapCut</span>
                 </a>
             </div>
         </section>
@@ -273,24 +305,31 @@
             <div class="tool-grid">
                 <a href="https://www.perplexity.ai" target="_blank" class="tool-button" data-name="Perplexity AI">
                     <img src="https://www.perplexity.ai/favicon.svg" alt="Perplexity AI Logo">
+                    <span class="tool-name">Perplexity AI</span>
                 </a>
                 <a href="https://elicit.org" target="_blank" class="tool-button" data-name="Elicit">
-                    <img src="https://elicit.com/assets/elicit-logo-purple.svg" alt="Elicit Logo">
+                    <img src="https://yt3.googleusercontent.com/ksfLLIjvy8Y5vvtAmnSzIeF-svAUzrZyJBs-YwCVZUZGct8XNDb6-KJSepMwCrcuFkb6b8oCczo=s900-c-k-c0x00ffffff-no-rj" alt="Elicit Logo">
+                    <span class="tool-name">Elicit</span>
                 </a>
                 <a href="https://consensus.app" target="_blank" class="tool-button" data-name="Consensus App">
                     <img src="https://consensus.app/img/favicon/favicon.svg" alt="Consensus Logo">
+                    <span class="tool-name">Consensus</span>
                 </a>
                 <a href="https://jenni.ai" target="_blank" class="tool-button" data-name="Jenni AI">
                     <img src="https://jenni.ai/images/logo.svg" alt="Jenni AI Logo">
+                    <span class="tool-name">Jenni AI</span>
                 </a>
                 <a href="https://poe.com" target="_blank" class="tool-button" data-name="Poe by Quora">
                     <img src="https://qsf.fs.quoracdn.net/-4-ans_frontend_assets.images.poe.poe_subbrand_logo.png-26-9f799a6d10c0e5bb.png" alt="Poe by Quora Logo">
+                    <span class="tool-name">Poe</span>
                 </a>
                 <a href="https://julius.ai" target="_blank" class="tool-button" data-name="Julius AI">
                     <img src="https://julius.ai/julius_logo_purple.svg" alt="Julius AI Logo">
+                    <span class="tool-name">Julius AI</span>
                 </a>
                 <a href="https://notebooklm.google.com" target="_blank" class="tool-button" data-name="NotebookLM Google">
                     <img src="https://notebooklm.google.com/images/notebooklm-lockup.svg" alt="NotebookLM Logo">
+                    <span class="tool-name">NotebookLM</span>
                 </a>
             </div>
         </section>
@@ -300,42 +339,55 @@
             <div class="tool-grid">
                 <a href="https://chat.openai.com" target="_blank" class="tool-button" data-name="ChatGPT GPT-4o OpenAI">
                     <img src="https://openai.com/assets/images/openai-logomark.svg" alt="ChatGPT Logo">
+                    <span class="tool-name">ChatGPT</span>
                 </a>
                 <a href="https://claude.ai" target="_blank" class="tool-button" data-name="Claude Anthropic">
                     <img src="https://www.anthropic.com/images/claude-logomark.svg" alt="Claude Logo">
+                    <span class="tool-name">Claude</span>
                 </a>
                 <a href="https://gemini.google.com" target="_blank" class="tool-button" data-name="Gemini Google">
                     <img src="https://fonts.gstatic.com/s/i/productlogos/gemini/v1/192px.svg" alt="Gemini Logo">
+                    <span class="tool-name">Gemini</span>
                 </a>
                 <a href="https://cursor.sh" target="_blank" class="tool-button" data-name="Cursor">
                     <img src="https://cursor.sh/brand/logo.svg" alt="Cursor Logo">
+                    <span class="tool-name">Cursor</span>
                 </a>
                 <a href="https://www.blackbox.ai" target="_blank" class="tool-button" data-name="Blackbox AI">
                     <img src="https://uploads-ssl.webflow.com/63c5861b5fc91223900223f0/63f73368297099687e7951c6_blackbox-logo-2.svg" style="filter: invert(1);" alt="Blackbox AI Logo">
+                    <span class="tool-name">Blackbox AI</span>
                 </a>
                 <a href="https://github.com/features/copilot" target="_blank" class="tool-button" data-name="GitHub Copilot">
                     <img src="https://www.vectorlogo.zone/logos/github_copilot/github_copilot-icon.svg" alt="GitHub Copilot Logo">
+                    <span class="tool-name">GitHub Copilot</span>
                 </a>
                 <a href="https://www.phind.com" target="_blank" class="tool-button" data-name="Phind">
                     <img src="https://phind.com/images/phind-logo-light-2.svg" alt="Phind Logo">
+                    <span class="tool-name">Phind</span>
                 </a>
                 <a href="https://grok.x.ai" target="_blank" class="tool-button" data-name="Grok X AI">
                     <img src="https://s.x.com/static-bundles/images/x_brand_1/logo.svg" style="filter: invert(1);" alt="Grok Logo">
+                    <span class="tool-name">Grok</span>
                 </a>
                 <a href="https://chat.qwen.ai" target="_blank" class="tool-button" data-name="Qwen Alibaba">
                     <img src="https://img.alicdn.com/imgextra/i3/O1CN01sZ5s5s1sZ5s5s5s5s_!!6000000005790-2-tps-180-180.png" alt="Qwen Logo">
+                    <span class="tool-name">Qwen</span>
                 </a>
                 <a href="https://manus.im" target="_blank" class="tool-button" data-name="Manus">
                     <img src="https://manus.im/_next/static/media/logo.8a4b6c31.svg" alt="Manus Logo">
+                    <span class="tool-name">Manus</span>
                 </a>
                 <a href="https://lovable.dev" target="_blank" class="tool-button" data-name="Lovable">
                     <img src="https://app.lovable.dev/lovable.svg" alt="Lovable Logo">
+                    <span class="tool-name">Lovable</span>
                 </a>
                 <a href="https://bolt.new" target="_blank" class="tool-button" data-name="Bolt">
                     <img src="https://bolt.new/icon.svg" alt="Bolt Logo">
+                    <span class="tool-name">Bolt</span>
                 </a>
                 <a href="https://replit.com" target="_blank" class="tool-button" data-name="Replit">
                     <img src="https://replit.com/public/icons/icon-512x512.png" alt="Replit Logo">
+                    <span class="tool-name">Replit</span>
                 </a>
             </div>
         </section>
