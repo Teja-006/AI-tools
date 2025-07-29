@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools Nexus</title>
+    <style>
+        /* Define color palette and animation properties as CSS variables */
+        :root {
+            --primary-glow: #00e5ff; /* Cyan glow */
+            --secondary-glow: #ff00c1; /* Magenta glow */
+            --background-start: #050314;
+            --background-end: #0a0122;
+            --card-background: rgba(26, 26, 46, 0.4); /* Semi-transparent card color */
+            --text-color: #e0e0e0;
+            --header-color: #ffffff;
+            --border-color: rgba(0, 229, 255, 0.3);
+        }
+
+        /* Animated Gradient Background */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(-45deg, var(--background-start), var(--background-end), #021a30, #240a33);
+            background-size: 400% 400%;
+            animation: gradientBG 25s ease infinite;
+            color: var(--text-color);
+            margin: 0;
+            padding: 2rem;
+            text-align: center;
+            overflow-x: hidden; /* Prevent horizontal scrollbar */
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* "Aurora" Spotlight Cursor Effect */
+        #cursor-light {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--primary-glow) 0%, rgba(0, 229, 255, 0) 60%);
+            border-radius: 50%;
+            pointer-events: none; /* Allows clicking through the div */
+            transform: translate(-50%, -50%);
+            transition: background 0.5s ease;
+            mix-blend-mode: screen; /* Blends the light with the background */
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--background-end);
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--primary-glow);
+            border-radius: 10px;
+        }
+
+        /* Main Content & Fade-In Animation */
+        main {
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header & Search Bar */
+        header {
+            margin-bottom: 3rem;
+        }
+        header h1 {
+            font-size: 3rem;
+            color: var(--header-color);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px var(--primary-glow), 0 0 25px var(--secondary-glow);
+            letter-spacing: 2px;
+        }
+        
+        #search-box {
+            width: 100%;
+            max-width: 500px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            color: var(--header-color);
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 229, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        #search-box:focus {
+            outline: none;
+            border-color: var(--primary-glow);
+            box-shadow: 0 0 15px var(--primary-glow), 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Glassmorphism Section Cards */
+        section {
+            background: var(--card-background);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
+        }
+        
+        section h2 {
+            font-size: 2rem;
+            color: var(--header-color);
+            border-bottom: 2px solid;
+            border-image: linear-gradient(to right, var(--primary-glow), var(--secondary-glow)) 1;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+            margin-bottom: 2rem;
+        }
+
+        /* Tool Grid & Buttons */
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tool-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(42, 42, 70, 0.5); /* Slightly darker button */
+            border-radius: 10px;
+            height: 100px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden; /* For shine effect */
+        }
+
+        .tool-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 0 20px var(--primary-glow);
+            border-color: var(--primary-glow);
+        }
+        
+        /* Shine effect on hover */
+        .tool-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 75%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: skewX(-25deg);
+            transition: left 0.7s ease-in-out;
+        }
+
+        .tool-button:hover::before {
+            left: 125%;
+        }
+
+        .tool-button img {
+            max-width: 70%;
+            max-height: 70%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .tool-button:hover img {
+            transform: scale(1.1);
+        }
+        
+        .note {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+            margin-top: -1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Class to hide tools for search functionality */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor-light"></div>
+
+    <header>
+        <h1>AI Tools Nexus</h1>
+        <input type="text" id="search-box" placeholder="🔎 Search for any tool...">
+    </header>
+
+    <main>
+        <section>
+            <h2>🎨 Image & Design</h2>
+            <div class="tool-grid">
+                <a href="https://leonardo.ai" target="_blank" class="tool-button" data-name="Leonardo AI">
+                    <img src="https://asset.brandfetch.io/id0V_tY1N0/idS4d43603.svg" alt="Leonardo Logo">
+                </a>
+                <a href="https://www.adobe.com/firefly" target="_blank" class="tool-button" data-name="Adobe Firefly">
+                    <img src="https://www.adobe.com/content/dam/cc/icons/firefly-icon.svg" alt="Adobe Firefly Logo">
+                </a>
+                <a href="https://designer.microsoft.com" target="_blank" class="tool-button" data-name="Microsoft Designer">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Microsoft_Designer_logo.svg" alt="Microsoft Designer Logo">
+                </a>
+                <a href="https://simplified.com" target="_blank" class="tool-button" data-name="Simplified">
+                    <img src="https://uploads-ssl.webflow.com/6214efb633a35639d74a88f7/6214f55b9e54a557878a8790_simplified-logo.svg" alt="Simplified Logo">
+                </a>
+                <a href="https://playground.com" target="_blank" class="tool-button" data-name="Playground">
+                    <img src="https://storage.googleapis.com/playground-prod-web/assets/logo-symbol-play-black.svg" style="filter: invert(1);" alt="Playground Logo">
+                </a>
+                <a href="https://uizard.io" target="_blank" class="tool-button" data-name="Uizard">
+                    <img src="https://uizard.io/img/logo-dark.svg" style="filter: invert(1);" alt="Uizard Logo">
+                </a>
+                <a href="https://ideogram.ai" target="_blank" class="tool-button" data-name="Ideogram">
+                    <img src="https://ideogram.ai/assets/logo-black.svg" style="filter: invert(1);" alt="Ideogram Logo">
+                </a>
+                <a href="https://www.hitpaw.com" target="_blank" class="tool-button" data-name="HitPaw">
+                    <img src="https://www.hitpaw.com/logo.png" alt="HitPaw Logo">
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <h2>🎬 Video Creation</h2>
+            <p class="note">Note: CapCut requires a download from their website.</p>
+            <div class="tool-grid">
+                <a href="https://www.veed.io" target="_blank" class="tool-button" data-name="Veed.io">
+                    <img src="https://www.veed.io/images/veed-logo-symbol-black.svg" style="filter: invert(1);" alt="Veed Logo">
+                </a>
+                <a href="https://www.descript.com" target="_blank" class="tool-button" data-name="Descript">
+                    <img src="https://asset.brandfetch.io/idT2bT46X5/id58U41QNo.svg" alt="Descript Logo">
+                </a>
+                <a href="https://www.revid.ai" target="_blank" class="tool-button" data-name="Revid AI">
+                    <img src="https://www.revid.ai/images/logo.png" alt="Revid Logo">
+                </a>
+                <a href="https://pictory.ai" target="_blank" class="tool-button" data-name="Pictory">
+                    <img src="https://pictory.ai/wp-content/uploads/2023/12/pictory-favicon-192.png" alt="Pictory Logo">
+                </a>
+                <a href="https://invideo.io" target="_blank" class="tool-button" data-name="Invideo">
+                    <img src="https://invideo.io/static/main-logo-192x192-3d5f36098d5755106bdd1d5458e03d32.png" alt="Invideo Logo">
+                </a>
+                <a href="https://runwayml.com" target="_blank" class="tool-button" data-name="RunwayML">
+                    <img src="https://runwayml.com/static/images/logo-dark.svg" style="filter: invert(1);" alt="Runway Logo">
+                </a>
+                <a href="https://www.capcut.com" target="_blank" class="tool-button" data-name="Capcut App Install">
+                    <img src="https://lf16-capcut-web.capcutugc.com/obj/capcut-web-biz/static-resource/image/capcut_logo_2023_v2.svg" alt="Capcut Logo">
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <h2>🔬 Research</h2>
+            <div class="tool-grid">
+                <a href="https://www.perplexity.ai" target="_blank" class="tool-button" data-name="Perplexity AI">
+                    <img src="https://www.perplexity.ai/favicon.svg" alt="Perplexity AI Logo">
+                </a>
+                <a href="https://elicit.org" target="_blank" class="tool-button" data-name="Elicit">
+                    <img src="https://elicit.com/assets/elicit-logo-purple.svg" alt="Elicit Logo">
+                </a>
+                <a href="https://consensus.app" target="_blank" class="tool-button" data-name="Consensus App">
+                    <img src="https://consensus.app/img/favicon/favicon.svg" alt="Consensus Logo">
+                </a>
+                <a href="https://jenni.ai" target="_blank" class="tool-button" data-name="Jenni AI">
+                    <img src="https://jenni.ai/images/logo.svg" alt="Jenni AI Logo">
+                </a>
+                <a href="https://poe.com" target="_blank" class="tool-button" data-name="Poe by Quora">
+                    <img src="https://qsf.fs.quoracdn.net/-4-ans_frontend_assets.images.poe.poe_subbrand_logo.png-26-9f799a6d10c0e5bb.png" alt="Poe by Quora Logo">
+                </a>
+                <a href="https://julius.ai" target="_blank" class="tool-button" data-name="Julius AI">
+                    <img src="https://julius.ai/julius_logo_purple.svg" alt="Julius AI Logo">
+                </a>
+                <a href="https://notebooklm.google.com" target="_blank" class="tool-button" data-name="NotebookLM Google">
+                    <img src="https://notebooklm.google.com/images/notebooklm-lockup.svg" alt="NotebookLM Logo">
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <h2>💻 Programming</h2>
+            <div class="tool-grid">
+                <a href="https://chat.openai.com" target="_blank" class="tool-button" data-name="ChatGPT GPT-4o OpenAI">
+                    <img src="https://openai.com/assets/images/openai-logomark.svg" alt="ChatGPT Logo">
+                </a>
+                <a href="https://claude.ai" target="_blank" class="tool-button" data-name="Claude Anthropic">
+                    <img src="https://www.anthropic.com/images/claude-logomark.svg" alt="Claude Logo">
+                </a>
+                <a href="https://gemini.google.com" target="_blank" class="tool-button" data-name="Gemini Google">
+                    <img src="https://fonts.gstatic.com/s/i/productlogos/gemini/v1/192px.svg" alt="Gemini Logo">
+                </a>
+                <a href="https://cursor.sh" target="_blank" class="tool-button" data-name="Cursor">
+                    <img src="https://cursor.sh/brand/logo.svg" alt="Cursor Logo">
+                </a>
+                <a href="https://www.blackbox.ai" target="_blank" class="tool-button" data-name="Blackbox AI">
+                    <img src="https://uploads-ssl.webflow.com/63c5861b5fc91223900223f0/63f73368297099687e7951c6_blackbox-logo-2.svg" style="filter: invert(1);" alt="Blackbox AI Logo">
+                </a>
+                <a href="https://github.com/features/copilot" target="_blank" class="tool-button" data-name="GitHub Copilot">
+                    <img src="https://www.vectorlogo.zone/logos/github_copilot/github_copilot-icon.svg" alt="GitHub Copilot Logo">
+                </a>
+                <a href="https://www.phind.com" target="_blank" class="tool-button" data-name="Phind">
+                    <img src="https://phind.com/images/phind-logo-light-2.svg" alt="Phind Logo">
+                </a>
+                <a href="https://grok.x.ai" target="_blank" class="tool-button" data-name="Grok X AI">
+                    <img src="https://s.x.com/static-bundles/images/x_brand_1/logo.svg" style="filter: invert(1);" alt="Grok Logo">
+                </a>
+                <a href="https://chat.qwen.ai" target="_blank" class="tool-button" data-name="Qwen Alibaba">
+                    <img src="https://img.alicdn.com/imgextra/i3/O1CN01sZ5s5s1sZ5s5s5s5s_!!6000000005790-2-tps-180-180.png" alt="Qwen Logo">
+                </a>
+                <a href="https://manus.im" target="_blank" class="tool-button" data-name="Manus">
+                    <img src="https://manus.im/_next/static/media/logo.8a4b6c31.svg" alt="Manus Logo">
+                </a>
+                <a href="https://lovable.dev" target="_blank" class="tool-button" data-name="Lovable">
+                    <img src="https://app.lovable.dev/lovable.svg" alt="Lovable Logo">
+                </a>
+                <a href="https://bolt.new" target="_blank" class="tool-button" data-name="Bolt">
+                    <img src="https://bolt.new/icon.svg" alt="Bolt Logo">
+                </a>
+                <a href="https://replit.com" target="_blank" class="tool-button" data-name="Replit">
+                    <img src="https://replit.com/public/icons/icon-512x512.png" alt="Replit Logo">
+                </a>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        // JavaScript for interactive features
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Aurora Spotlight Cursor Effect ---
+            const light = document.getElementById('cursor-light');
+            document.addEventListener('mousemove', (e) => {
+                light.style.left = e.clientX + 'px';
+                light.style.top = e.clientY + 'px';
+            });
+            
+            // --- Live Search/Filter Functionality ---
+            const searchBox = document.getElementById('search-box');
+            const toolButtons = document.querySelectorAll('.tool-button');
+            const sections = document.querySelectorAll('main section');
+
+            searchBox.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+
+                toolButtons.forEach(button => {
+                    const toolName = button.getAttribute('data-name').toLowerCase();
+                    if (toolName.includes(searchTerm)) {
+                        button.classList.remove('hidden');
+                    } else {
+                        button.classList.add('hidden');
+                    }
+                });
+                
+                // Hide section titles if all tools within them are hidden
+                sections.forEach(section => {
+                    const visibleButtons = section.querySelectorAll('.tool-button:not(.hidden)');
+                    if(visibleButtons.length === 0) {
+                        section.classList.add('hidden');
+                    } else {
+                        section.classList.remove('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
