@@ -98,7 +98,7 @@
         }
         .tech-logo {
             position: absolute;
-            top: 1 rem;
+            top: 1rem;
             left: 2rem;
             width: 150px; /* Set a specific width for the SVG */
             height: auto;
@@ -145,7 +145,7 @@
             max-width: 1200px;
         }
 
-        section h2 {
+        section h2, .media-wrapper h2 {
             font-size: 2rem;
             color: var(--header-color);
             border-bottom: 2px solid;
@@ -156,7 +156,23 @@
             margin-bottom: 2rem;
             width: auto;
         }
+        
+        /* Wrapper for the media section to remove the card background */
+        .media-wrapper {
+            width: 90%;
+            max-width: 1200px;
+            margin-bottom: 2rem;
+        }
 
+        .tool-grid-media{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
         /* Tool Grid & Buttons */
         .tool-grid {
             display: grid;
@@ -213,6 +229,17 @@
 
         .tool-button:hover img {
             transform: scale(1.1);
+        }
+        
+        /* Styles for larger QR codes in the media section */
+        .tool-grid-media .tool-button {
+            height: 220px;
+            width: 220px; /* Giving a fixed width for better alignment */
+        }
+
+        .tool-grid-media .tool-button img {
+            max-width: 150px;
+            max-height: 150px;
         }
 
         .tool-name {
@@ -416,6 +443,20 @@
                 </a>
             </div>
         </section>
+
+        <div class="media-wrapper">
+            <h2>Follow Us On</h2>
+            <div class="tool-grid-media">
+                <a href="https://www.instagram.com/techclub.woxsen?igsh=enEyejNyd3ZrNWRl&utm_source=qr" target="_blank" class="tool-button" data-name="Instagram QR Code">
+                    <img src="instagram_qr.jpg" alt="Instagram QR Code" style="border-radius: 8px;">
+                    <span class="tool-name">Instagram</span>
+                </a>
+                <a href="https://www.linkedin.com/company/woxsen-technology-club/posts/?feedView=all" target="_blank" class="tool-button" data-name="LinkedIn QR Code">
+                    <img src="linked_qr.png" alt="LinkedIn QR Code" style="border-radius: 8px;">
+                    <span class="tool-name">LinkedIn</span>
+                </a>
+            </div>
+        </div>
     </main>
 
     <script>
@@ -429,17 +470,29 @@
             const searchBox = document.getElementById('search-box');
             const toolButtons = document.querySelectorAll('.tool-button');
             const sections = document.querySelectorAll('main section');
+            const mediaWrapper = document.querySelector('.media-wrapper');
+
 
             searchBox.addEventListener('input', (e) => {
                 const searchTerm = e.target.value.toLowerCase();
+                
+                // Filter regular tool buttons
                 toolButtons.forEach(button => {
                     const toolName = button.getAttribute('data-name').toLowerCase();
-                    button.classList.toggle('hidden', !toolName.includes(searchTerm));
+                    const isMediaButton = button.closest('.media-wrapper');
+                    if (!isMediaButton) {
+                        button.classList.toggle('hidden', !toolName.includes(searchTerm));
+                    }
                 });
+
+                // Hide/show sections based on visible buttons
                 sections.forEach(section => {
                     const visibleButtons = section.querySelectorAll('.tool-button:not(.hidden)');
                     section.classList.toggle('hidden', visibleButtons.length === 0);
                 });
+
+                // Handle media wrapper visibility separately if you want it to hide
+                // For now, it stays visible as its buttons are not part of the main filter
             });
         });
     </script>
