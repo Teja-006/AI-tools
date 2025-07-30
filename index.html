@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Tools</title>
+    <title>Vibe Coding</title>`
     <style>
         /* Define color palette and animation properties as CSS variables */
         :root {
@@ -26,8 +26,8 @@
             color: var(--text-color);
             margin: 0;
             padding: 2rem;
-            text-align: center;
             overflow-x: hidden; /* Prevent horizontal scrollbar */
+            text-align: center;
         }
 
         @keyframes gradientBG {
@@ -45,10 +45,10 @@
             height: 400px;
             background: radial-gradient(circle, var(--primary-glow) 0%, rgba(0, 229, 255, 0) 60%);
             border-radius: 50%;
-            pointer-events: none; /* Allows clicking through the div */
+            pointer-events: none;
             transform: translate(-50%, -50%);
             transition: background 0.5s ease;
-            mix-blend-mode: screen; /* Blends the light with the background */
+            mix-blend-mode: screen;
             z-index: -1;
             opacity: 0.2;
         }
@@ -70,6 +70,10 @@
             opacity: 0;
             animation: fadeIn 1s ease-in-out forwards;
             animation-delay: 0.5s;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         @keyframes fadeIn {
@@ -77,20 +81,38 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Header & Search Bar */
+        /* Header */
         header {
-            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            width: 100%;
+            position: relative;
+        }
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .tech-logo {
+            position: absolute;
+            top: 1 rem;
+            left: 2rem;
+            width: 150px; /* Set a specific width for the SVG */
+            height: auto;
         }
         header h1 {
-            font-size: 3rem;
+            font-size: 4rem;
             color: var(--header-color);
-            margin-bottom: 1rem;
+            margin: 1rem 0 1.5rem 0;
             text-shadow: 0 0 15px var(--primary-glow), 0 0 25px var(--secondary-glow);
             letter-spacing: 2px;
         }
-        
+
         #search-box {
-            width: 100%;
+            width: 90%;
             max-width: 500px;
             padding: 12px 20px;
             font-size: 1rem;
@@ -99,7 +121,7 @@
             border: 1px solid var(--border-color);
             border-radius: 50px;
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 229, 255, 0.2);
             transition: all 0.3s ease;
         }
@@ -118,9 +140,11 @@
             margin-bottom: 2rem;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            -webkit-backdrop-filter: blur(10px);
+            width: 90%;
+            max-width: 1200px;
         }
-        
+
         section h2 {
             font-size: 2rem;
             color: var(--header-color);
@@ -130,6 +154,7 @@
             padding-bottom: 0.5rem;
             margin-top: 0;
             margin-bottom: 2rem;
+            width: auto;
         }
 
         /* Tool Grid & Buttons */
@@ -137,6 +162,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             gap: 1.5rem;
+            justify-content: center;
         }
 
         .tool-button {
@@ -144,7 +170,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: rgba(42, 42, 70, 0.5); /* Slightly darker button */
+            background: rgba(42, 42, 70, 0.5);
             border-radius: 10px;
             height: 120px;
             padding: 10px;
@@ -152,7 +178,7 @@
             transition: all 0.3s ease;
             border: 1px solid transparent;
             position: relative;
-            overflow: hidden; /* For shine effect */
+            overflow: hidden;
         }
 
         .tool-button:hover {
@@ -160,8 +186,7 @@
             box-shadow: 0 0 20px var(--primary-glow);
             border-color: var(--primary-glow);
         }
-        
-        /* Shine effect on hover */
+
         .tool-button::before {
             content: '';
             position: absolute;
@@ -203,27 +228,31 @@
         .tool-button:hover .tool-name {
             color: var(--header-color);
         }
-        
+
         .note {
             font-size: 0.9rem;
             color: #a0a0a0;
             margin-top: -1rem;
             margin-bottom: 1.5rem;
+            text-align: center;
         }
-        
-        /* Class to hide tools for search functionality */
+
         .hidden {
             display: none;
         }
+
     </style>
 </head>
 <body>
-
     <div id="cursor-light"></div>
 
     <header>
-        <h1>AI Tools</h1>
-        <input type="text" id="search-box" placeholder="🔎 Search for any tool...">
+        <img class="tech-logo" src="Club_logo_white[1].png" alt="TECH Logo">
+
+        <div class="header-content">
+            <h1>Vibe Coding</h1>
+            <input type="text" id="search-box" placeholder="🔎 Search for any tool...">
+        </div>
     </header>
 
     <main>
@@ -254,9 +283,8 @@
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPy8rydMu4Ns2O0a8h3KWnSLEHEv1VuiJ1-A&s" style="filter: invert(1);" alt="Uizard Logo">
                     <span class="tool-name">Uizard</span>
                 </a>
-                </a>
                 <a href="https://www.hitpaw.com" target="_blank" class="tool-button" data-name="HitPaw">
-                    <img src="https://yt3.googleusercontent.com/ytc/AIdro_kvmh6fCjicKNhlyS7cHaJAoFwkv8VZ60fUBAnfoKt-8g=s900-c-k-c0x00ffffff-no-rj" alt="HitPaw Logo">
+                    <img src="https://www.hitpaw.com/logo.png" alt="HitPaw Logo">
                     <span class="tool-name">HitPaw</span>
                 </a>
             </div>
@@ -283,7 +311,7 @@
                     <span class="tool-name">Pictory</span>
                 </a>
                 <a href="https://invideo.io" target="_blank" class="tool-button" data-name="Invideo">
-                    <img src="https://play-lh.googleusercontent.com/WDz0NXm0WUG7mYSR-RcwehRDAYs-Oip4SH1yMRkU9Kax_9f2v7VcUTzUgdnNT7wcEpo7" alt="Invideo Logo">
+                    <img src="https://mma.prnewswire.com/media/2163914/invideo_Logo.jpg?p=facebook" alt="Invideo Logo">
                     <span class="tool-name">Invideo</span>
                 </a>
                 <a href="https://runwayml.com" target="_blank" class="tool-button" data-name="RunwayML">
@@ -305,7 +333,7 @@
                     <span class="tool-name">Perplexity AI</span>
                 </a>
                 <a href="https://elicit.org" target="_blank" class="tool-button" data-name="Elicit">
-                    <img src="https://yt3.googleusercontent.com/ksfLLIjvy8Y5vvtAmnSzIeF-svAUzrZyJBs-YwCVZUZGct8XNDb6-KJSepMwCrcuFkb6b8oCczo=s900-c-k-c0x00ffffff-no-rj" alt="Elicit Logo">
+                    <img src="https://pbs.twimg.com/profile_images/1674433431326031872/s20x1T5L_400x400.jpg" alt="Elicit Logo">
                     <span class="tool-name">Elicit</span>
                 </a>
                 <a href="https://consensus.app" target="_blank" class="tool-button" data-name="Consensus App">
@@ -317,7 +345,7 @@
                     <span class="tool-name">Jenni AI</span>
                 </a>
                 <a href="https://poe.com" target="_blank" class="tool-button" data-name="Poe by Quora">
-                    <img src="https://play-lh.googleusercontent.com/A9D18P0Sm7s9T4LMjmuL8YWsYSGQrPABiLNh9LNvRrJlQ80HVI4hxe-GaCyi-180Cg" alt="Poe by Quora Logo">
+                    <img src="https://pbs.twimg.com/profile_images/1603642382434050048/p-4dK31u_400x400.png" alt="Poe by Quora Logo">
                     <span class="tool-name">Poe</span>
                 </a>
                 <a href="https://julius.ai" target="_blank" class="tool-button" data-name="Julius AI">
@@ -363,7 +391,7 @@
                     <span class="tool-name">Phind</span>
                 </a>
                 <a href="https://grok.x.ai" target="_blank" class="tool-button" data-name="Grok X AI">
-                    <img src="https://play-lh.googleusercontent.com/dQRKhi30KpzG3gww3TdVLzyIAVuOAWylnAcgnEUxqfpm2A8dEt2sgApVvtKAy-DO8aI" style="filter: invert(1);" alt="Grok Logo">
+                    <img src="https://pbs.twimg.com/profile_images/1722784982635999232/eI5y2A5t_400x400.jpg" style="filter: invert(1);" alt="Grok Logo">
                     <span class="tool-name">Grok</span>
                 </a>
                 <a href="https://chat.qwen.ai" target="_blank" class="tool-button" data-name="Qwen Alibaba">
@@ -389,47 +417,31 @@
             </div>
         </section>
     </main>
-    
-    <script>
-        // JavaScript for interactive features
-        document.addEventListener('DOMContentLoaded', () => {
 
-            // --- Aurora Spotlight Cursor Effect ---
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
             const light = document.getElementById('cursor-light');
             document.addEventListener('mousemove', (e) => {
                 light.style.left = e.clientX + 'px';
                 light.style.top = e.clientY + 'px';
             });
-            
-            // --- Live Search/Filter Functionality ---
+
             const searchBox = document.getElementById('search-box');
             const toolButtons = document.querySelectorAll('.tool-button');
             const sections = document.querySelectorAll('main section');
 
             searchBox.addEventListener('input', (e) => {
                 const searchTerm = e.target.value.toLowerCase();
-
                 toolButtons.forEach(button => {
                     const toolName = button.getAttribute('data-name').toLowerCase();
-                    if (toolName.includes(searchTerm)) {
-                        button.classList.remove('hidden');
-                    } else {
-                        button.classList.add('hidden');
-                    }
+                    button.classList.toggle('hidden', !toolName.includes(searchTerm));
                 });
-                
-                // Hide section titles if all tools within them are hidden
                 sections.forEach(section => {
                     const visibleButtons = section.querySelectorAll('.tool-button:not(.hidden)');
-                    if(visibleButtons.length === 0) {
-                        section.classList.add('hidden');
-                    } else {
-                        section.classList.remove('hidden');
-                    }
+                    section.classList.toggle('hidden', visibleButtons.length === 0);
                 });
             });
         });
     </script>
-
 </body>
 </html>
