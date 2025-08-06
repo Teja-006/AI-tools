@@ -268,6 +268,26 @@
             display: none;
         }
 
+        /* Featured Tool Button Styles */
+        .tool-button.featured {
+            background: rgba(0, 229, 255, 0.15);
+            border: 1px solid var(--primary-glow);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .tool-button.featured::after {
+            content: '🌟';
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 1rem;
+        }
+
+        .tool-button.featured:hover {
+            background: rgba(0, 229, 255, 0.25);
+            box-shadow: 0 0 25px var(--primary-glow);
+        }
+
         /* Mobile Responsive Fixes */
         @media (max-width: 768px) {
             /* 1. Make the header simpler for mobile */
@@ -459,39 +479,19 @@
                     <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/manus.png" alt="Manus Logo">
                     <span class="tool-name">Manus</span>
                 </a>
-                <a href="https://lovable.dev" target="_blank" class="tool-button" data-name="Lovable">
+                <a href="https://lovable.dev" target="_blank" class="tool-button featured" data-name="Lovable">
                     <img src="https://pbs.twimg.com/profile_images/1915780454092779520/PIxdzAvI_400x400.jpg" alt="Lovable Logo">
                     <span class="tool-name">Lovable</span>
                 </a>
-                <a href="https://bolt.new" target="_blank" class="tool-button" data-name="Bolt">
+                <a href="https://bolt.new" target="_blank" class="tool-button featured" data-name="Bolt">
                     <img src="https://pbs.twimg.com/profile_images/1880702021122342912/fe9TlQqJ_400x400.jpg" alt="Bolt Logo">
                     <span class="tool-name">Bolt</span>
                 </a>
-                <a href="https://replit.com" target="_blank" class="tool-button" data-name="Replit">
+                <a href="https://replit.com" target="_blank" class="tool-button featured" data-name="Replit">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHxDoTXMkYU19iZk_4os4y1QTYf5R7mgWM6Q&s" alt="Replit Logo">
                     <span class="tool-name">Replit</span>
                 </a>
                     <a href="https://copilot.microsoft.com" target="_blank" class="tool-button" data-name="Microsoft Copilot">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST-2HlIa5EEXdR5Hw6R2XfzLJG2tpkmnKdPw&s" alt="Microsoft Copilot Logo">
-                    <span class="tool-name">Microsoft Copilot</span>
-                </a>
-                <a href="https://kimi.ai" target="_blank" class="tool-button" data-name="Kimi AI">
-                    <img src="https://hdrobots.com/wp-content/uploads/2025/02/kimi-ai-logo.webp" alt="Kimi AI Logo">
-                    <span class="tool-name">Kimi</span>
-                </a>
-                <a href="https://chat.deepseek.com" target="_blank" class="tool-button" data-name="DeepSeek AI">
-                    <img src="https://alice.dev/wp-content/uploads/2025/01/deepseek-ai-icon-seeklogo.png" alt="DeepSeek Logo">
-                    <span class="tool-name">DeepSeek</span>
-                </a>
-                <a href="https://mistral.ai" target="_blank" class="tool-button" data-name="Mistral AI">
-                    <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/mistral-ai-icon.png" alt="Mistral AI Logo">
-                    <span class="tool-name">Mistral AI</span>
-                </a>
-                <a href="https://llama.meta.com" target="_blank" class="tool-button" data-name="Llama by Meta">
-                    <img src="https://res.cloudinary.com/apideck/image/upload/w_196,f_auto/v1677940393/marketplaces/ckhg56iu1mkpc0b66vj7fsj3o/listings/meta_nnmll6.webp" alt="Llama Logo">
-                    <span class="tool-name">Llama</span>
-                </a>
-                <a href="https://ai.google.dev/gemma" target="_blank" class="tool-button" data-name="Gemma by Google">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxAyPFo1tyJloYV2zn7LMdNNrrApsg8Je9kA&s" alt="Gemma Logo">
                     <span class="tool-name">Gemma</span>
                 </a>
